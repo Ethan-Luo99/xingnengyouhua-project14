@@ -47,3 +47,28 @@ a {
     color-scheme: dark;
   }
 }
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 8px;
+  border-bottom: 1px solid rgba(127, 127, 127, 0.2);
+  font-variant-numeric: tabular-nums;
+  /* 脉冲动画从内联样式收敛到类，并由 content-visibility 让屏外行跳过渲染 */
+  animation: pulse 1s infinite;
+  content-visibility: auto;
+  contain-intrinsic-size: auto 32px;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.72;
+  }
+  100% {
+    opacity: 1;
+  }
+}
