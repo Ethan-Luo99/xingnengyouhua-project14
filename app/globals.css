@@ -47,3 +47,31 @@ a {
     color-scheme: dark;
   }
 }
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 8px;
+  border-bottom: 1px solid rgba(127, 127, 127, 0.2);
+  font-variant-numeric: tabular-nums;
+  /* 行脉冲动画（原内联 style，移入 class；opacity 动画不触发布局） */
+  animation: pulse 1s infinite;
+}
+
+/* 滚动视觉反馈：由 dashboard 的 scroll 监听在越过顶部时切换 */
+body.scrolled {
+  box-shadow: inset 0 2px 0 0 rgba(127, 127, 127, 0.45);
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.72;
+  }
+  100% {
+    opacity: 1;
+  }
+}
