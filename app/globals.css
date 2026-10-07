@@ -59,6 +59,50 @@ a {
   animation: pulse 1s infinite;
 }
 
+/* ---- 实时面板布局（本轮新增） ----
+   .rows 是 flex 列容器：行的视觉顺序完全由每个 .row 的内联 order 决定，
+   过滤时只切 display:none。这样过滤/排序往返都不移动/销毁 DOM，
+   Chart 实例与 canvas 永久绑定。 */
+.dashboard {
+  display: block;
+}
+
+.toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px;
+  background: var(--background);
+  border-bottom: 1px solid rgba(127, 127, 127, 0.3);
+}
+
+.toolbar input {
+  width: 200px;
+}
+
+.rows {
+  display: flex;
+  flex-direction: column;
+}
+
+.conn {
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+
+.conn-live {
+  color: #16a34a;
+}
+
+.conn-connecting,
+.conn-reconnecting {
+  color: #d97706;
+  animation: pulse 1s infinite;
+}
+
 /* 滚动视觉反馈：由 dashboard 的 scroll 监听在越过顶部时切换 */
 body.scrolled {
   box-shadow: inset 0 2px 0 0 rgba(127, 127, 127, 0.45);
